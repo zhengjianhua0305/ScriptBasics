@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件的正则</title>
+</head>
+<!-- 
+    邮件的正则
+        -hello.li@abc.com.cn
+        -开头 
+        -1.任意字母数字下划线 . 任意字母数字下划线      \w{3,}  (\.\w+)*
+        -2.@                                          @
+        -3.任意字母数字                                 [A-z0-9]+
+        -4..任意字母(2-5位)   .任意字母(2-5位)        (\.[A-z]{2,5}){1,2}
+
+        -()*括号中的内容可有可无
+        -(){1,2}括号中的内容整体出现一到两次
+ -->
+<script>
+    var eamilReg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
+    var email = "abc@abc.com";
+    var email1 = "1070481649@qq.com";
+    console.log(eamilReg.test(email));
+</script>
+
+<body>
+
+</body>
+
+</html>

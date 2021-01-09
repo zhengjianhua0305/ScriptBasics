@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的简介</title>
+</head>
+<!-- 
+    函数
+        -函数也是一个对象
+        -函数中可以封装一些功能（代码），在需要时可以执行这些功能（代码）
+        -函数中可以保存一些代码  在需要的时候调用
+        -使用typeof 检查一个函数对象时，会返回function
+
+    1.构造函数(基本不使用)
+        -如：var fun = new Function("xxx");
+
+    2.函数声明(推荐)
+        -语法：
+            - function 函数名([形参1,形参2...形参N]){
+                    语句...
+                }
+
+    3.函数表达式(匿名函数)
+        -语法：
+            var 函数名 = function([形参1,形参2...形参N]){
+                语句...
+            }
+ -->
+<script>
+    //创建一个函数对象
+    //  var fun = new Function();
+    //  console.log(fun);
+
+
+    //函数声明
+    function fun2() {
+        console.log("第二个函数");
+        alert('msg');
+        document.write("ssss");
+    }
+    console.log(fun2);
+
+    //匿名函数
+    var fun3 = function () {
+        console.log("AAA");
+    }
+
+
+    function aa(){
+        document.write("这是函数声明");
+        document.write("</br>");
+    }
+    aa();
+
+    var func = function(){
+        document.write("这是函数表达式");
+    }
+    func();
+</script>
+
+<body>
+
+</body>
+
+</html>

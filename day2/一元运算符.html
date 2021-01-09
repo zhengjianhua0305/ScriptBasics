@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一元运算符</title>
+    <!-- 
+        一元运算符，只需要一个操作数
+        +正号
+            -正好不会对数字产生任何影响
+        -负号
+            -负号可以对数字进行符号的取反
+        -对于非Number类型的值
+            它会将先转换为Number,然后在运算
+            可以对一个其他的数据类型使用+，来将其转换为number
+            它的原理和Number()函数一样
+     -->
+    <script>
+        var a = 123;
+        a = +a;
+        console.log(a);
+
+        var a = 123;
+        a = -a;
+        console.log(a);
+        
+        a=true;
+        console.log(a);
+
+        //字符串前 有+号直接转换成number
+        var result = 1 + +"2" +3;
+        console.log(result);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

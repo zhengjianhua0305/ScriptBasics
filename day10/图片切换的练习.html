@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换的练习</title>
+</head>
+<!-- 
+    图片切换的练习
+ -->
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #outer {
+        width: 600px;
+        height: 500px;
+        margin: 50px auto;
+        padding: 50px;
+        text-align: center;
+        background: greenyellow;
+    }
+
+    img {
+        width: 600px;
+        height: 500px;
+    }
+</style>
+<script>
+    window.onload = function () {
+        /*
+            点击按钮切换图片
+        */
+        var prev = document.getElementById('prev');
+        var next = document.getElementById('next');
+        var img = document.getElementsByTagName("img")[0];
+        var span1 = document.getElementById('span1');
+        var span2 = document.getElementById('span2');
+        var arr = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"];
+        var count = 0;
+        //为两个按钮绑定单击相应函数
+        span1.innerHTML = arr.length;
+        span2.innerHTML = count + 1;
+        prev.onclick = function () {
+            count--
+            if (count < 0) {
+                count = arr.length - 1;
+            }
+            img.src = arr[count];
+            span2.innerHTML = count + 1;
+        }
+        next.onclick = function () {
+            count++;
+            if (count > arr.length - 1) {
+                count = 0;
+            }
+            img.src = arr[count];
+            span2.innerHTML = count + 1;
+        }
+
+    }
+</script>
+
+<body>
+    <div id="outer">
+        <p>一共有<span id="span1"></span>张图片当前为第<span id="span2"></span>张</p>
+        <img src="1.jpg" alt="1">
+        <button id="prev">上一张</button>
+        <button id="next">下一张</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>质数练习的改进</title>
+</head>
+<!-- 
+        Math.sqrt();可以对一个数进行开方
+     -->
+<script>
+    // var result = Math.sqrt(4);
+    // console.log(result);
+    for (var i = 2; i <= 100; i++) {
+        var flag = true;
+        for (var j = 2; j <= Math.sqrt(i); j++) {
+            if (i % j == 0) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            console.log(i + "是质数");
+        } else {
+            console.log(i + "不是质数");
+        }
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

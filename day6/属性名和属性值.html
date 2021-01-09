@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性名和属性值</title>
+</head>
+    <!-- 
+        属性名
+            -对象的属性名尽量按照标识符的规范
+            -如果非要使用特殊的属性名，不能采用.的方式来操作
+                需要使用另一种方式：
+                语法：
+                    - 属性["xxx"]=属性值
+        属性值
+            -JS对象的属性硬质，可以是任意的数据类型
+
+        in 运算符
+            -通过in运算符可以检查一个对象中是否含有指定的属性
+                如果有则返回true 没有则返回false
+            -语法：
+                "属性名" in 对象
+     -->
+     <script>
+         //"123"  --> 用 "" 引起来的 称为字面量
+         //n --> 称为变量
+         var obj = new Object();
+         obj["123"]=8789;
+         var n = "123";
+         console.log(obj["123"]);
+         console.log(obj[n]);
+
+         //禁止套娃系列
+         var obj2 = new Object();
+         obj2.test = true;
+         var obj3 = new Object();
+         obj3.name="郑建华";
+         obj2.test=obj3;
+         console.log(obj2.test.name);
+
+         //检查是否含有test2属性名
+         console.log("test2" in obj2);
+     </script>
+<body>
+    
+</body>
+</html>

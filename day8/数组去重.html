@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重</title>
+</head>
+<!-- 
+    数组去重
+        -
+ -->
+<script>
+    /*
+        数组去重
+    */
+    var arr = [1, 1, 1,2, 2, 4, 5, 6, 3, 5, 2, 3, 7];
+
+    //循环遍历出arr所有的数组
+    for (var i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+        //遍历除当前元素的后面所有元素
+        for (var j = i + 1; j < arr.length; j++) {
+            console.log(arr[j]);
+            //判断当两个元素相等时
+            if (arr[i] == arr[j]) {
+                //去除掉后面的元素
+                arr.splice(j, 1);
+                //当删除当前j元素以后，后边的元素会自动补位
+                //此时将不会在比较这个元素，需要在比较一次j所在位置的元素,也就是下标后退一步
+                j --;
+            }
+        }
+    }
+    console.log(arr);
+</script>
+
+<body>
+
+</body>
+
+</html>

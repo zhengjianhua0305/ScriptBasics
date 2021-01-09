@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>质数练习</title>
+</head>
+<!-- 
+    输出质数
+     -->
+<script>
+    var num = prompt("输入一个数");
+    if (num <= 1) {
+        alert("该数值不合法");
+    } else {
+        //1是质数所有不用算进去,从2开始，获取2-num之间的数字，用for循环遍历出 
+        //创建一个变量来保存当前的数的状态
+        //默认当前num是质数
+        var flag = true;
+        for (var i = 2; i < num; i++) {
+            //console.log(i);
+            if (num % i == 0) {
+                //如果num能被i整除，则说明num一定不是质数 
+                flag = false;
+            }
+        }
+        if (flag) {
+            alert(num + "是质数");
+        } else {
+            alert(num + "不是质数");
+        }
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

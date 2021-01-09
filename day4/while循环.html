@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while循环</title>
+</head>
+<!-- 
+        while循环向页面中输出连续的数字
+        -while循环
+            -语法：
+                while(条件表达式){
+                    语句...
+                }
+        -while语句在执行时，
+                先对条件表达式进行求值判断，
+                    -如果值为true，则执行循环体
+                        循环体执行完毕以后，继续对表达式进行判断
+                        如果为true，则执行执行循环体，以此类推
+                    -如果为false，则终止循环
+        -do...while玄幻
+                -语法:
+                    do{
+                        语句...
+                    }while(条件表达式)
+                -执行流程:
+                    do...while语句在执行时，会先执行循环体，
+                        循环体执行完毕以后，在对while后的条件表达式进行判断，
+                        如果为true，则继续
+                        如果为false，则终止
+     -->
+<script>
+    var n = 1;
+    while (true) {
+        alert(n++);
+        if (n == 5) {
+            break;
+        }
+    }
+
+    var i = 0;
+    while(i <10){
+        alert(i);
+        i++;
+    }
+
+    var j = 0;
+    do{
+        alert(j);
+        j++;
+    }while(j <=10);
+
+</script>
+
+<body>
+
+</body>
+
+</html>

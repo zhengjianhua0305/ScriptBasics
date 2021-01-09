@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环</title>
+</head>
+<!-- 
+        for语句
+            在for循环中为我们提供了专门的位置用来放三个表达式：
+                1：初始化表达式
+                2：条件表达式
+                3：更新表达式
+
+            for循环的语句:
+                for(初始化表达式;条件表达式;更新表达式){
+                    语句...
+                }
+            for循环的流程:
+                1.执行初始化表达式，初始化变量
+                2.执行条件表达式，判断是否执行循环
+                    如果为true，则执行循环
+                    如果为false，则终止循环
+                3.执行更新表达式，更新表达式执行完毕继续重复
+     -->
+<script>
+    for (var i = 0; i < 5; i++) {
+        alert(i);
+    }
+
+    //打印1-100之间的奇数之和
+    var sum = 0;
+    for (var i = 1; i <= 100; i += 2) {
+        sum += i;
+        console.log(sum);
+    }
+
+    //能被2整除（i%2==0）为偶数，不能被2整除（i%2！=0）为技术
+    var sum = 0;
+    for (var i = 0; i <= 100; i++) {
+        if (i % 2 != 0) {
+            //奇数
+            console.log(sum += i);
+        }
+    }
+
+    //打印1-100之间所有7的倍数的个数及总和
+
+    //打印1-100之间所有的数
+    var sum = 0;
+    var count = 0;
+    for (var i = 1; i <= 100; i++) {
+        //判断i是否是7的倍数
+        if (i % 7 == 0) {
+            console.log(i);
+            sum += i;
+            count++;
+        }
+    }
+    console.log(count);
+    console.log(sum);
+
+    //打印水仙花数(指一个3位数，它的每个位上的数字的3次幂之和等于它本身)
+
+    //打印所有的三位数
+    for (var i = 100; i < 1000; i++) {
+        //获取百位数字
+        var bai = parseInt(i / 100);
+        //获取十位数字
+        var shi = parseInt((i - bai * 100) / 10);
+        //获取个位数
+        var ge = i % 10;
+        //判断i是否是水仙花数
+        if (bai * bai * bai + shi * shi * shi + ge * ge * ge == i) {
+            console.log(i);
+        }
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

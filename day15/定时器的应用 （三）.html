@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器的应用</title>
+</head>
+<!-- 
+    定时器的应用
+        -少用全部变量会造成隐患，可以使用obj.属性
+ -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* 开启绝对定位 */
+        position: absolute;
+        /* 兼容IE，避免出现auto */
+        left: 0;
+    }
+
+    #box2 {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        /* 开启绝对定位 */
+        position: absolute;
+        /* 兼容IE，避免出现auto */
+        left: 0;
+        top: 200px;
+    }
+</style>
+<script src="定时器应用的Tools.js"></script>
+<script>
+    //页面加载完成时
+    window.onload = function () {
+        //获取box1
+        var box1 = document.getElementById('box1');
+        //获取btn01
+        var btn01 = document.getElementById('btn01');
+        //获取btn02
+        var btn02 = document.getElementById('btn02');
+        //获取btn03
+        var btn03 = document.getElementById('btn03');
+        //获取btn04
+        var btn04 = document.getElementById('btn04');
+
+
+        //点击按钮响应的向左或向右移动
+        /*
+            目前我们的定时器的标识由全局变量timer保存
+            所有的正在执行的定时器都在这个变量中保存
+        */
+        btn01.onclick = function () {
+            move(box1, "left", 800, 20);
+        };
+
+        btn02.onclick = function () {
+            move(box1, "left", 0, 10);
+        };
+
+        btn03.onclick = function () {
+            move(box2, "left", 800, 10);
+        };
+
+        btn04.onclick = function () {
+            // move(box2, "width", 800, 10);
+            // move(box2, "top", 800, 10);
+            // move(box2, "height", 800, 10);
+            //函数有无限可能
+            move(box2, "width", 800, 10, function () {
+                move(box2, "height", 400, 10, function () {
+                    move(box2, "top", 0, 10, function () {
+                        move(box2, "width", 100, 10, function () {
+                            move(box2, "top", 200, 10, function () {
+                                move(box2, "height", 100, 10,
+                                    function () {
+
+                                    });
+                            });
+                        });
+                    });
+                });
+            })
+        };
+    };
+    //定义定时器变量,因为定义为全局会影响两个box各自的timer，所以不能使用
+    // var timer;
+    /*
+        尝试创建一个可以执行简单动画的函数
+        参数：
+            obj：要执行动画的对象
+            attr:要执行动画的样式,比如：left top width height
+            target:执行动画的目标位置
+            speed:移动的速度
+            callback:回调函数,这个函数将会在动画执行结束时执行
+    */
+</script>
+
+<body>
+    <button id="btn01">点击按钮以后box1向右移动</button>
+    <button id="btn02">点击按钮以后box1向左移动</button>
+    <button id="btn03">点击按钮以后box2向右移动</button>
+    <button id="btn04">测试按钮</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div style="width: 0; height: 1000px; border-left: 1px black solid; position: absolute; left: 800px;top: 0;"></div>
+</body>
+
+</html>

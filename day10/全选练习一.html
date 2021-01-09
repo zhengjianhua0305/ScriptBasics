@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选练习一</title>
+</head>
+<!-- 
+    全选练习
+ -->
+
+<body>
+    <script>
+        window.onload = function () {
+            //封装点击对象
+            function click(id, fun) {
+                var btn = document.getElementById(id);
+                btn.onclick = fun;
+            };
+
+            //获取四个多选框items
+            var items = document.getElementsByName('items');
+            //获取全选全不选的多选框
+            var checkedAllBox = document.getElementById('checkedAllBox');
+
+
+            //为id为checkedAllBtn绑定单击响应函数
+            // 全选按钮,点击按钮以后， 四个多选框全都被选中
+            click("checkedAllBtn", function () {
+                for (var i = 0; i < items.length; i++) {
+                    items[i].checked = true;
+                };
+                //将全选/全不选设置为选中
+                checkedAllBox.checked = true;
+            });
+
+            //为id为checkedNoBtn绑定单击响应函数
+            click("checkedNoBtn", function () {
+                items.forEach(function (e) {
+                    e.checked = false;
+                });
+                //将全选/全不选设置为不选中
+                checkedAllBox.checked = false;
+            });
+
+            //为id为checkedRevBtn绑定单击响应函数
+            click("checkedRevBtn", function () {
+                //在反选时也需要判断四个多选框是否全都选中
+                checkedAllBox.checked = true;
+                //判断多选框状态
+                items.forEach(function (value, index) {
+                    //三目表达式 如果items被选中则设置为false，如果没有被选中则设置true
+                    if (value.checked ? value.checked = false : value.checked = true);
+                    //如果有一个items为false则全选设置为false
+                    if (!items[index].checked) {
+                        checkedAllBox.checked = false;
+                    }
+                });
+            });
+
+            //为提交按钮sendBtn绑定单击响应函数
+            click("sendBtn", function () {
+                items.forEach(function (value) {
+                    //判断多选框是否选中
+                    if (value.checked) {
+                        console.log(value.value);
+                    }
+                });
+            });
+
+            //为checkedAllBox按钮绑定单击响应函数
+            click("checkedAllBox", function () {
+                //设置多选框的选中状态
+                var _this = this;
+                items.forEach(function (value) {
+                    value.checked = _this.checked;
+                });
+            });
+
+            /*
+                如果四个多选框全都选中，则checkedAllBox也应该选中
+                如果四个多选框没都选中，则checkedAllBox也不应该选中
+            */
+            //为四个多选框分别绑定点击响应函数
+            for (var i = 0; i < items.length; i++) {
+                items[i].onclick = function () {
+                    //将checkedAllBox.checked = true
+                    checkedAllBox.checked = true;
+                    //判断四个多选框是否全选
+                    for (var j = 0; j < items.length; j++) {
+                        //只要有一个没选中就不是全选
+                        if (!items[j].checked) {
+                            //一旦进入判断，则证明不是全选状态
+                            //将checkedAllBox.checked=false;
+                            checkedAllBox.checked = false;
+                            //一旦进入判断，则已经得出结果,不用再继续执行循环
+                            break;
+                        }
+                    };
+                }
+            };
+        }
+    </script>
+    <form action="" method="POST">
+        你爱好的运动是<input type="checkbox" id="checkedAllBox">全选/全不选
+        <br>
+        <input type="checkbox" name="items" value="足球">足球
+        <input type="checkbox" name="items" value="篮球">篮球
+        <input type="checkbox" name="items" value="羽毛器">羽毛球
+        <input type="checkbox" name="items" value="乒乓球">乒乓球
+        <br>
+        <input type="button" id="checkedAllBtn" value="全选">
+        <input type="button" id="checkedNoBtn" value="全不选">
+        <input type="button" id="checkedRevBtn" value="反选">
+        <input type="button" id="sendBtn" value="提交">
+    </form>
+</body>
+
+</html>

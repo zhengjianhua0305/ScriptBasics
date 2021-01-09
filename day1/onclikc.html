@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onClick</title>
+</head>
+<body>
+    <button onclick="alert('111111');">点我</button>
+    <a href="javascript:alert('1111111');">超链接</a>
+    <!-- 可以外部引入script,外部引用后，内部再写会忽略-->
+    <script src="onclick.js">
+    </script>
+    <!-- 可以再编写一个script -->
+    <script>
+        alert('AAAAAAA');
+    </script>
+</body>
+</html>

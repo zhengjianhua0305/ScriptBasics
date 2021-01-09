@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#total{
+    position: absolute;
+    float: left;
+    width: 500px;
+    height: 500px;
+    left: 30%;
+    transform: translateY(30%);
+    letter-spacing: 1.5px;
+    line-height: 35px;
+}
+
+#city{
+    list-style: none;
+}
+
+ul{
+    width: 400px;
+    display: block;
+}
+
+li{
+    width: 50px;
+    display: inline-block;
+    padding: 10px;
+    background: greenyellow;
+}
+
+
+#btnList{
+    position: absolute;
+    float: left;
+    left: 60%;
+    width: 300px;
+    height: 500px;
+    line-height: 30px;
+    transform: translateY(30%);
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prompt</title>
+</head>
+<!-- 
+
+     -->
+<script>
+    var score = prompt("请输入成绩")
+
+    if (score > 100 || score < 0 || isNaN(score)) {
+        alert("数值不对");
+    } else {
+        if (score >= 60 && score < 80) {
+            alert("奖励一本参考书");
+        } else if (score >= 80 && score <= 99) {
+            alert("奖励一台iphone15s");
+        } else if (score == 100) {
+            alert("奖励一辆BMW");
+        }else{
+            alert("什么奖励都没有");
+        }
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

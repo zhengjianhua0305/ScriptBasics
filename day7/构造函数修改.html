@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数修改</title>
+</head>
+<!-- 
+    创建一个Person构造函数
+ -->
+<script>
+    function Person(name, age, gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        //向对象中添加一个方法
+        // this.sayHello = fun;
+    }
+
+
+
+    /*
+        -将sayHello方法在全局作用域中定义
+        -将函数定义在全局作用域，污染了全局作用域的命名空间
+        -而且定义在全局作用域中也很不安全
+    */
+    // function fun() {
+    //     alert("Hello大家好,我是:" + this.name);
+    // }
+
+
+
+    //为了不污染全局作用域，那么我们可以将方法()添加到原型对象prototype中
+    Person.prototype.sayHello = function () {
+        alert("Hello大家好,我是:" + this.name);
+    }
+
+    /*
+        创建一个Person的实例
+            -在Person构造函数中，为每一个对象都添加了一个sayName方法
+                -目前我们的方法是在构造函数内部创建的
+                -也就是构造函数没执行一次就会创建一个新的sayName方法
+                -也是所有实例的sayName都是唯一的
+                -这样就导致了构造函数执行一次就会创建一个新的方法
+                    执行10000次就会创建10000个新的方法，而10000个方法都是一模一样的
+                    这是完全没有必要的，完全可以使所有的对象共享同一个方法
+    */
+    var per = new Person("孙悟空", 15, "男");
+    var per1 = new Person("AA", 18, "男");
+    var per2 = new Person("BB", 15, "男");
+    console.log(per);
+    console.log(per1);
+    console.log(per2);
+
+    console.log(per.sayHello == per1.sayHello); //对象
+    console.log(per.sayHello() == per1.sayHello()); //方法
+</script>
+
+<body>
+
+</body>
+
+</html>

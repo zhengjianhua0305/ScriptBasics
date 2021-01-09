@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM简介</title>
+</head>
+<!-- 
+    DOM Document Object Model 文档对象模型
+        -用来操作WEB页面
+        -文档(网页)
+        -对象(网页的每一个部分)
+        -模型(表示对象之间的关系)
+        -节点(是构成网页最基本的组成部分)
+            -文档节点：整个HTML文档
+            -元素节点：HTML文档中的HTML标签
+            -属性节点：元素的属性
+            -文本节点：HTML标签中的文本内容
+ -->
+
+<body>
+    <button id="btn">我是一个按钮</button>
+    <script>
+        /*
+            浏览器已经为我们提供文档节点 对象 这个对象是window属性
+                可以在页面中师姐使用，文档节点代表的额是整个网页
+        */
+        //    console.log(document);
+        var btn = document.getElementById('btn');
+        //修改按钮的文字 inner内部 HTML代码
+        btn.innerHTML = "I am Button";
+    </script>
+</body>
+
+
+</html>

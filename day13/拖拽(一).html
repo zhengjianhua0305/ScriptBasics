@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件拖拽(一)</title>
+</head>
+<!-- 
+    事件拖拽(一)
+         -拖拽的流程
+                1.当鼠标在被拖拽元素上按下时，开始拖拽  onmousedown
+                2.当鼠标移动时被拖拽元素跟随鼠标移动    onmousemove
+                3.当鼠标松开时，被拖拽元素固定在当前位置    onmouseup
+ -->
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+    }
+
+    #box2 {
+        width: 100px;
+        height: 100px;
+        background-color: yellowgreen;
+        position: absolute;
+        left: 200px;
+        top: 200px;
+    }
+</style>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+<script>
+    //页面加载完成后
+    window.onload = function () {
+        //获取box1
+        var box1 = document.getElementById('box1');
+        //为box1绑定一个鼠标按下事件
+        //当鼠标在被拖拽元素上按下时，开始拖拽  onmousedown
+        box1.onmousedown = function () {
+            //为document绑定一个onmousemove事件
+            document.onmousemove = function (event) {
+                event = event || window.event;
+                //当鼠标移动时被拖拽元素跟随鼠标移动    onmousemove
+                //获取鼠标的坐标
+                var left = event.clientX;
+                var top = event.clientY;
+                //修改box1的位置
+                box1.style.left = left + "px";
+                box1.style.top = top + "px";
+            };
+            //为元素绑定一个鼠标松开事件
+            document.onmouseup = function () {
+                //当鼠标松开时，被拖拽元素固定在当前位置    onmouseup
+                //取消document的onmousemove事件
+                document.onmousemove = null;
+                console.log('A');
+                //取消document的onmouseup事件
+                document.onmouseup = null;
+            };
+        };
+    };
+</script>
+
+</html>

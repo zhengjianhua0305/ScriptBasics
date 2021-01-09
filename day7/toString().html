@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toString()</title>
+</head>
+<!-- 
+    toString()
+ -->
+<script>
+    function Person(name, age, gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    //创建Person实例
+    var per = new Person("郑建华", 78, "男");
+    var per1 = new Person("SAAA", 11, "男");
+
+    //修改Person原型的toString
+    Person.prototype.toStirng = function () {
+        return "Person[name=" + this.name + "age=" + this.age + "gender=" + this.gender + "]";
+    };
+
+    //修改per的toStirng()返回值
+    // per.toString = function () {
+    //     return "Person[name=" + this.name + ",age=" + this.age + ",gender=" + this.gender + "]";
+    // };
+
+
+    /*
+        当我们在页面直接打印对象时
+        实际上是输出对象的toStirng()方法的返回值[Object,Object]
+        如果我们希望在输出对象时输出[Object,Object]，可以为对象添加一个toString()方法
+    */
+    // var result = per.toString();
+    // console.log("result=" + result);
+    console.log(per.toStirng());
+    console.log(per1.toStirng());
+
+    // console.log(per.hasOwnProperty("toString"));
+    // console.log(per.__proto__.hasOwnProperty("toString"));
+    // console.log(per.__proto__.__proto__.hasOwnProperty("toString"));
+</script>
+
+<body>
+
+</body>
+
+</html>

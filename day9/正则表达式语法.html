@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式语法</title>
+</head>
+<!-- 
+    正则表达式语法
+        -量词
+            -通过量词可以设置一个内容出现的次数
+            -两次只对它前边的一个内容起作用
+            -{n}正好出现n次
+            -{m,n}出现m-n次
+            -{m,}出现m次以上
+            - + 后面跟着至少一个{1,}
+            - * 0个或多个，相当于{0,}
+            - ? 0个或1个
+            - ^ 判断是否开头 [^]除了 /^/开头
+            - $ 表示结尾
+            - ^a$ 完全符合表达式以a开头立即结尾
+ -->
+
+<script>
+    //创建一个正则表达式检查一个字符串是否含有aaa
+    var reg = /aaa/;
+    console.log(reg.test("aaabd"));
+
+    //判断a连续出现3次
+    var reg1 = /a{3}/;
+    console.log(reg1.test("aaabbb"));
+
+    //判断ab连续出现3次
+    var reg2 = /(ab){3}/;
+    console.log(reg2.test("ababab"));
+
+    //判断出现1-3次
+    var reg3 = /ab{1,3}c/;
+    console.log(reg3.test("abc"));
+
+    //判断后面跟着至少出现一个
+    var reg4 = /ab+c/;
+    console.log(reg4.test("aaabcfffgggc"));
+
+    //判断出现0个或多个
+    var reg4 = /ab*c/;
+    console.log(reg4.test("aaabcfffgggccccccc"));
+
+    //判断是否a开头
+    var reg5 = /^a/;
+    console.log(reg5.test("abbbb"));
+
+    //判断是否a结尾
+    var reg5 = /a$/;
+    console.log(reg5.test("abbbbaa"));
+
+    //要求完全符合表达式
+    var reg6 = /^a$/;
+    console.log(reg6.test("a"));
+
+    //判断字符串是否是一个合法手机号
+    /*
+        13144254232
+        1.以1开头
+        2.第二位3-9任意数字
+        3.三位以后任意数字9个
+
+        ^1  [3-9]   [0-9]{9}$ 
+    */
+
+    var phoneReg = /^1[3-9][0-9]{9}$/;
+    var phone = "13144254232";
+    console.log(phoneReg.test(phone));
+</script>
+
+<body>
+
+</body>
+
+</html>

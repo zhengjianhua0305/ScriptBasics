@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>返回值的类型</title>
+</head>
+<!-- 
+    返回值可以是任意的数据类型
+        也可以是一个对象
+        也可以是一个函数
+ -->
+<script>
+    function fun(x) {
+        return x;
+    }
+    console.log(fun(50));
+
+
+    function fun1() {
+        var obj = {
+            name: "11",
+            age: 44,
+            gender: "男"
+        };
+        return obj;
+    }
+    console.log(fun1().name);
+
+    //在函数内部可以 无限申明 函数(无限套娃)
+    function fun2() {
+        function fun3() {
+            alert("我是fun3");
+        }
+        // fun3();
+        return fun3;
+    }
+    console.log(fun2());
+</script>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法</title>
+</head>
+<!-- 
+    方法：
+        -   obj.xxx = function(){
+                语句...
+            }
+    枚举
+        -   for(var 变量 in 对象){
+
+        }
+        -for...in 语句 对象中有几个属性，循环体就执行几次
+        -每次执行时，会将对象中的一个属性的名字赋值给变量
+ -->
+<script>
+    var obj = new Object();
+    //想对象中添加属性
+    obj.name = "孙悟空";
+    obj.age = 18;
+    //对象的属性可以是任何的数据类型,也可以是个函数
+    obj.sayName = function () {
+        console.log(obj.name);
+    }
+    obj.sayName();
+    /*
+        函数也可以成为对象的属性
+            如果一个函数作为一个对象属性保存
+            那么我们称这个函数是这个对象的方法
+            调用函数就是调用对象的方法(method)
+        
+        但是它只是名称上的区别没有其他的区别
+    */
+
+    var obj2 = {
+        name: "猪八戒",
+        age: 14,
+        sayName: function () {
+            console.log(obj2.name);
+        }
+    }
+    obj2.sayName();
+
+    var obj3 = {
+        name:"aaa",
+        gender:"男",
+        age:15
+    }
+
+    //枚举对象中的属性
+    //变量作为属性名的时候 调用 需要用到 []
+    for (var n in obj3) {
+        // console.log(obj3);
+        console.log(obj3[n]);
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

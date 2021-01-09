@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关系运算符</title>
+</head>
+<!-- 
+        通过关系运算符可以比较两个值之间的大小关系
+            如果关系成立它会返回true，如果关系不成立则返回false
+        
+        >大于号
+            -判断符号左侧的值是否大于右侧的
+            -如果关系 成立 返回true，如果关系不成立则返回false
+        
+        >=大于等于
+            -判断符号左侧的值是否大于或等于右侧的值
+
+        <=小于等于
+            -非数值的情况
+
+        非数值的情况
+            -对于非数值进行比较时，会将其转换为数字然后在比较 
+            -如果符号两侧的值都是字符串，不会将其转换为数字进行比较
+                而会分别比较字符串左右   字符的Unicode编码
+            -如果比较的两个字符串型的数字，可能会得到不可预期的结果
+        
+     -->
+<script>
+    var result = 5 > 10;
+    console.log("result=" + result);
+
+    result = 5 <= 6;
+    console.log("result=" + result);
+
+    console.log(10 > null);
+
+    //任何职和NaN做任何比较都是false
+    console.log(10 <= NaN);
+
+</script>
+
+<body>
+
+</body>
+
+</html>

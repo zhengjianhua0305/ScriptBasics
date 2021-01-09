@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的委派</title>
+</head>
+<!-- 
+    事件的委派
+        -指将事件统一绑定给元素的共同的祖先元素，这样当后代元素上的事件触发时，会一直冒泡到祖先的元素
+        -从而通过祖先元素的响应函数来处理事件
+        -事件委派是利用了冒泡，通过委派可以减少事件绑定的次数，提高程序的性能
+    target
+        -通过事件对象event获取到target来获取到元素
+        -可以通过判断target获取到的元素上的属性或者方法来判断是不是获取到了
+        -if (event.target.className == "link") {
+                alert('我是ul的点击响应函数');
+            }
+ -->
+<style>
+
+</style>
+
+<body>
+    <button id="btn01">添加超连接诶</button>
+    <ul id="u1" style="background-color: #bfa;">
+        <li><a href="javascript:;" class="link">超链接1</a></li>
+        <li><a href="javascript:;" class="link">超链接3</a></li>
+        <li><a href="javascript:;" class="link">超链接2</a></li>
+    </ul>
+</body>
+<script>
+    //页面加载完成
+    window.onload = function () {
+        /*
+            为每一个超链接都绑定一个单击响应函数
+        */
+        //点击按钮以后添加超链接
+        var u1 = document.getElementById('u1');
+        var btn01 = document.getElementById('btn01');
+        btn01.onclick = function () {
+            //创建一个li
+            var li = document.createElement('li');
+            li.innerHTML = "<a href='javascript:;' class='link'>超链接4</a>";
+            //获取ul
+            u1.appendChild(li);
+        };
+        /*
+            -为每一个超链接都绑定一个单击响应函数
+            -这里我们为每一个超链接 都绑定了一个单击响应函数
+            -这种操作比较麻烦
+            -而且这些操作只能为已有的超链接设置，而新添加的必须重新绑定
+        */
+        /*
+             -我们希望，只绑定一次事件，即可应用到多个的元素上，即使元素是后添加的
+             我们可以尝试将其绑定给元素的共同的祖先元素
+        */
+        //为u1绑定一个单击响应函数
+        u1.onclick = function (event) {
+            event = event || window.event;
+            /*
+                target
+                    -event中的target表示的触发事件的对象
+            */
+            // alert(event.target);
+            // alert('A');
+            //如果触发事件的对象是我们期望的元素，则执行否则不执行
+            //通过event.target获取到元素,在通过className获取到class属性名
+            if (event.target.className == "link") {
+                alert('我是ul的点击响应函数');
+            }
+        };
+    };
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数</title>
+</head>
+<!-- 
+    立即执行函数：
+        -函数对象()
+        -立即执行函数一般只会执行一次
+        -立即执行函数放在循环中也会多次执行
+ -->
+<script>
+    (function () {
+        console.log("aaaa");
+    })();
+
+    for (var i = 0; i < 5; i++) {
+        (function (a, b) {
+            console.log("a=" + a);
+            console.log("b=" + b);
+        })(1, 2);
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

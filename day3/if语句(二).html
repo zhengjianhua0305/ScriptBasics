@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if语句(二)</title>
+    <!-- 
+        if语句
+            语法二:
+                if(条件表达式){
+                    语句...
+                }else{
+                    语句...
+                }
+        if...else...语句
+                如果为true，则执行if后的语句
+                如果为false，则执行else后的语句
+            语法三：
+                if(条件表达式){
+                    语句...
+                }else if(条件表达式){
+                    语句...
+                }else if(条件表达式){
+                    语句...
+                }else{
+                    语句...
+                }
+
+            if...else if...else
+                执行该语句，会从上到下依次对条件表达式进行求值判断
+                如果值为true，则执行当前语句
+                如果值为false，则继续向下判断
+                如果都不满足，都执行else后语句
+                该语句中只有一个代码块被执行，一旦代码块被执行，则直接结束语句
+     -->
+    <script>
+        var age = 60;
+        if(age>=60){
+            alert("你已经退休了");
+        }
+
+        var result = 80;
+        if(result<50){
+            alert("AAA");
+        }else if(result==50){
+            alert("BBB");
+        }else if(result >50){
+            alert("CCC");
+        }else if(result>60){
+            alert("DDD");
+        }else if(result >70){
+            alert("EEE");
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

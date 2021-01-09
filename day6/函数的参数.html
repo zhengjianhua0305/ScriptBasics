@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的参数</title>
+</head>
+<!-- 
+    定义一个用来求两个数和的函数
+        -可以在函数的()中来指定一个或多个形参(形式参数)
+        -多个形参之间使用,隔开,声明形参就相当于在函数内部声明了对应的变量
+        -在调用函数时，可以在()中指定实参(实际参数)
+        -实参 将会 赋值 给函数中对应的 形参
+        -多余实参不会被赋值
+
+    注意
+        -调用函数时解析器不会检查实参的类型
+        -所以要注意，是否有可能会接受到非法的参数
+ -->
+<script>
+    function sum(a,b){
+        console.log(a+b);
+    }
+    sum(1,2);
+</script>
+
+<body>
+
+</body>
+
+</html>

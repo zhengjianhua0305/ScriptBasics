@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算的优先级</title>
+</head>
+<!-- 
+        ,运算符
+        使用,可以分割多个语句，一般可以在生命多各变量时使用,
+     -->
+<script>
+    //使用,运算符同时声明多个变量
+    var a = 1,
+        b = 2,
+        c = 3;
+    alert(b);
+
+    //运算符中的优先级，在JS中运算符也有优先级,比如：先乘除后加减
+    //在JS中有一个运算符优先级的表，
+    //在表中越靠上优先级越高，优先级越高越优先计算，如果优先级一样，则从左往右计算
+    //可以使用()来改变优先级
+
+    var result = 1 || 2 && 3;
+    console.log("result=" + result);
+
+    var result = (1 || 2) && 3;
+    console.log("result=" + result);
+</script>
+
+<body>
+
+</body>
+
+</html>

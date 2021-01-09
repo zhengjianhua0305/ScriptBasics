@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算数运算符</title>
+</head>
+    <!-- 
+        运算符也叫操作符
+            通过运算符可以对一个或多个值进行运算,并获取运算结果
+            比如：typeof就是运算符，可以来获取一个值的类型,
+                它会将该值的类型以字符串的形式返回
+                number string boolean undefined object
+        算数运算符
+            当对非Number类型的值进行运算时,会将这些值转换为Number然后在运算
+            任何事和NaN做运算都得NaN
+            +
+                如果对两个字符串进行加法运算，则会做拼串
+                任何值和字符串做加法运算，都会先转换为字符串，然后在和字符串做拼串的操作
+            -
+                任何值和Number做减法运算，都会先转化为Number
+            *
+                乘法
+            /
+                除法
+            %
+                取模
+     -->
+    <script>
+        var a = 123;
+        var result = typeof a;
+        console.log(result);
+        console.log(typeof result);
+
+        result =a+1;
+        console.log(result);
+
+        result=456+789;
+        console.log(result);
+
+        result = true +1;
+        console.log(result);
+
+        result = 2+null;
+        console.log(result);
+
+        result=2+NaN;
+        console.log(result);
+
+        result = "123"  +"456";
+        console.log(result);
+
+        result = 123+"1";
+        console.log(result);
+
+        var c = 123;
+        c=c+"";
+        c=String(c);
+        console.log(typeof c);
+
+        result = 1+2+"3";
+        result="1"+2+3;
+        console.log("result="+result);
+
+        c = c-"1";
+        console.log(c);
+
+        c = c-"nn";
+        console.log(c);
+
+        var b = 2;
+        b = b *null;
+        console.log(b);
+
+        b = b*undefined;
+        console.log(b);
+    </script>
+<body>
+    
+</body>
+</html>

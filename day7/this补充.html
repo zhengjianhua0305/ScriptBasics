@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this补充</title>
+</head>
+<!-- 
+    this补充
+ -->
+<script>
+    var name = "全局name";
+
+    function fun() {
+        console.log(this.name);
+    }
+
+    var obj = {
+        name: "AAA",
+        sayName: fun
+    };
+
+    var obj2 = {
+        name: "BBB",
+        sayName: fun
+    }
+
+    fun();
+    obj.sayName();
+    obj2.sayName();
+</script>
+
+<body>
+
+</body>
+
+</html>

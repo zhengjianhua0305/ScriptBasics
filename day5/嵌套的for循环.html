@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套的for循环</title>
+</head>
+<!-- 
+
+     -->
+<script>
+    //第一种方法
+    var count = 1;
+    for (var i = 0; i < 5; i++) {
+        switch (count) {
+            case 1:
+                document.write("*" + "</br>");
+                break
+            case 2:
+                document.write("*&nbsp&nbsp*" + "</br>");
+                break;
+            case 3:
+                document.write("*&nbsp&nbsp*&nbsp&nbsp*" + "</br>");
+                break;
+            case 4:
+                document.write("*&nbsp&nbsp*&nbsp&nbsp*&nbsp&nbsp*" + "</br>");
+                break;
+            case 5:
+                document.write("*&nbsp&nbsp*&nbsp&nbsp*&nbsp&nbsp*&nbsp&nbsp*" + "</br>");
+                break;
+        }
+        count++;
+    }
+
+    document.write("</br>");
+
+    /*
+     *       第一行小于1
+     **      第二行小于2
+     ***     第三行小于3
+     ****    第四行小于4
+     *****   第五行小于5
+     */
+    //第二种方法
+    //外部for循环控制高度，外部循环1次，内部循环5次
+    //外部循环为1时，内部为0
+    for (var i = 0; i < 5; i++) {
+        //内部for循环控制宽度
+        for (var j = 0; j <= i; j++) {
+            document.write("*&nbsp&nbsp");
+        }
+        document.write("</br>");
+    }
+
+    document.write("</br>");
+
+    //倒着来
+    /*
+     *****
+     ****
+     ***
+     **
+     *
+     */
+
+    for (var i = 5; i >= 0; i--) {
+        for (var j = 0; j <= i; j++) {
+            document.write("*&nbsp&nbsp");
+        }
+        document.write("</br>");
+    }
+
+    document.write("</br>");
+
+
+    //打印99乘法表
+    /*
+        1*1=1
+        1*2=2 2*2=4
+        1*3=3 2*3=6 3*3=9
+        ...
+        1*9=9 2*9=18 3*9=27 4*9=36 5*9=45
+    */
+    for (var i = 1; i <= 9; i++) {
+        for (var j = 1; j <= i; j++) {
+            document.write("<span>" + j + "*" + i + "=" + i * j + "</span>");
+        }
+        document.write("</br>");
+    }
+    document.write("</br>");
+
+    //打印1-100的质数
+    //1不用看，规定的
+    for (var i = 2; i <= 100; i++) {
+        //当检验新数时，将flag先设为true
+        var flag = true;
+        //打印j-num之间的数(我们需要测试的数)
+        for (var j = 2; j < i; j++) {
+            if (i % j == 0) {
+                flag = false;
+            }
+        }
+        if (flag) {
+            console.log(i + "是质数");
+        } else {
+            console.log(i + "不是质数");
+        }
+    }
+</script>
+<style>
+    span {
+        display: inline-block;
+        width: 100px;
+        margin: 10px;
+    }
+</style>
+
+<body>
+
+</body>
+
+</html>

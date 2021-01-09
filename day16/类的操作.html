@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的操作</title>
+</head>
+<!-- 
+    类的操作
+        -className
+            -我们可以通过修改元素的class属性来间接的修改样式
+            -这样一来，我们只需要修改一次，即可同时修改多个样式
+            -这样浏览器只渲染页面一次，性能比较好
+ -->
+<style>
+    .b1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+
+    /* 要进行替换的类属性 */
+    .b2 {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        ;
+    }
+</style>
+<script>
+    //页面记载完成
+    window.onload = function () {
+        //获取btn01
+        var box = document.getElementById('box');
+        //获取btn01
+        var btn01 = document.getElementById('btn01');
+        //获取btn02
+        var btn02 = document.getElementById('btn02');
+        //获取btn03
+        var btn03 = document.getElementById('btn03');
+        //获取btn04
+        var btn04 = document.getElementById('btn04');
+        //为btn01绑定单击响应函数
+        btn01.onclick = function () {
+            //修改box样式
+            /*
+                通过style属性来修改元素的样式，每修改一个样式，浏览器就需要重新渲染一次页面
+                这样的执行的性能是比较差的，而且这种形式当我们要修改多个样式时，也不太方便
+            */
+            // box.style.width = '200' + 'px';
+            // box.style.height = '200' + 'px';
+            // box.style.backgroundColor = 'yellow';
+            //我们希望一行代码修改多个样式
+            //修改box的class属性
+            // box.className = 'b2';
+            //保留原有类属性并添加新的类属性
+            // box.className += ' b2';
+            addClass(box, 'b2');
+        };
+        btn02.onclick = function () {
+            removeClass(box, 'b1');
+        };
+
+        btn03.onclick = function () {
+            alert(hasClass(box, 'b2'));
+        };
+        btn04.onclick = function () {
+            toggleClass(box, 'b2');
+        };
+    };
+
+    //定义一个函数，用来向一个元素中添加指定的class属性值
+    /*
+        参数:
+            obj要添加class属性的元素
+            cn要添加的class值
+    */
+    function addClass(obj, cn) {
+        //检查obj中是否含有cn
+        if (!hasClass(obj, cn)) {
+            //空格是保留原有，没有空格是替换
+            obj.className += " " + cn;
+        }
+    };
+    /*
+        判断一个元素中是否函数有指定的class属性值
+        如果有该class返回true，没有则返回false
+    */
+    function hasClass(obj, cn) {
+        //判断obj中有没有cn class
+        //创建一个在正则表达式
+        // var reg = /\bb2\b/;
+        var reg = new RegExp('\\b' + cn + '\\b');
+        // alert(reg);
+        return reg.test(obj.className);
+    }
+
+    /*
+        删除一个元素中的指定的class属性
+    */
+    function removeClass(obj, cn) {
+        //创建一个正则表达式
+        var reg = new RegExp('\\b' + cn + '\\b');
+        //删除class
+        obj.className = obj.className.replace(reg, "");
+    };
+
+    /*
+        toggleClass可以用来切换一个类
+        如果元素中具有该类，则删除
+        如果元素中没有该类，则添加
+    */
+    function toggleClass(obj, cn) {
+        //判断obj中是否含有cn
+        if (hasClass(obj, cn)) {
+            //有，则删除
+            removeClass(obj, cn);
+        } else {
+            //没有，则添加
+            addClass(obj, cn);
+        }
+    }
+</script>
+
+<body>
+    <button id="btn01">点击按钮以后修改box的样式</button>
+    <button id="btn02">点击按钮以后删除box的样式</button>
+    <button id="btn03">点击按钮以后判断box的样式是否存在</button>
+    <button id="btn04">点击按钮以后对box进行切换操作</button>
+    <br>
+    <br>
+    <div id="box" class="b1"></div>
+</body>
+
+</html>

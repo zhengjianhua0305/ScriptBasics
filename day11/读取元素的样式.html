@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读取元素的样式</title>
+</head>
+<!-- 
+    读取元素的样式
+ -->
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+    }
+</style>
+<script>
+    window.onload = function () {
+        //点击按钮以后读取box1的样式
+        var box1 = document.getElementById('box1');
+        var btn01 = document.getElementById('btn01');
+        btn01.onclick = function () {
+            //读取box1的宽度
+            // alert(box1.style.width);
+            /*
+                只有IE支持
+                    -获取元素的当前显示的样式
+                    -语法：元素.currentStyle.样式名
+                    -它可以用来读取当前元素正在显示的样式
+                    -如果当前元素没有设置该样式，则获取默认值
+            */
+            //alert(box1.currentStyle.width);
+            // console.log(box1.currentStyle.width);
+            /*
+                在其他浏览器中可以使用
+                    -getComputedStyle()这个方法来获取元素当前的样式
+                    -这个方法是window的方法,可以直接使用
+                    -需要两个参数
+                    -第一个：要获取样式的元素
+                    -第二个：可以传递一个伪元素，一般都传null
+                    -该方法会返回一个对象，对象中封装了当前元素对应的样式
+                    -可以通过对象.样式名来读取样式
+                    -如果获取的样式没有设置，则会获取到真实的值，而不是默认值
+                    -比如：没有设置width，它不会获取到auto，而是一个长度
+                但是
+                    -该方法不支持IE8一下的浏览器
+                    -通过currentStyle和getComputedStyle()读取到的样式都是只读的
+                    -不能修改
+            */
+            // var obj = getComputedStyle(box1, null);
+            // alert(obj.width);
+            // alert(obj.backgroundColor);
+            alert(getStyle2(box1, 'width'));
+        };
+    };
+    /*
+        定义一个函数，用来获取指定元素的当前的样式
+        参数：
+                -obj要获取样式的元素
+                -name要获取的样式名
+    */
+    function getStyle(obj, name) {
+        //如果有获取到对象 
+        if (window.getComputedStyle) {
+            return getComputedStyle(obj, null)[name];
+            //否则
+        } else {
+            return obj.currentSytle[name];
+        }
+    };
+
+    function getStyle1(obj, name) {
+        // ||使用两种方法返回数据
+        return window.getComputedStyle(obj, null)[name] || obj.currentStyle[name];
+    };
+
+    function getStyle2(obj, name) {
+        //使用三目表达式
+        return window.getComputedStyle ? getComputedStyle(obj, null)[name] : obj.currentStyle[name];
+    }
+</script>
+
+<body>
+    <button id="btn01">点我一下01</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+</body>
+
+</html>

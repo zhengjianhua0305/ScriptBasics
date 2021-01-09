@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigator</title>
+</head>
+<!-- 
+    BOM
+        -浏览器对象模型
+        -BOM可以使我们通过JS来操作浏览器
+        -在BOM中为我们提供了一组对象，用来完成对浏览器的操作
+        -BOM对象
+            -Window
+                -代表整个浏览器的窗口,同时window也是网页中的全局对象
+            -Navigator
+                -代表当前浏览器的信息，该对象可以来识别不同的浏览器
+            -Location
+                -代表当前浏览器的地址栏信息，通过location可以获取地址栏信息，或者操作浏览器跳转页面
+            -History
+                -代表浏览器的历史记录，可以通过该对象来操作浏览器的历史记录
+                -由于隐私的原因，该对象不能获取到具体的历史记录，只能操作浏览器向前后向后翻页
+                -而且该操作只在当次访问时有效
+            -Screen
+                -代表用户的屏幕信息，通过该对象可以获取到用户的显示器的相关信息 
+        -这些BOM对象在浏览器中都是作为window对象的属性保存的
+        -可以通过window对象来使用，也可以直接使用
+ -->
+<style>
+
+</style>
+<script>
+    //页面加载完成时
+    window.onload = function () {
+        //可以 window.属性名
+        //也可以直接省略window
+        // console.log(window.navigator);
+        // console.log(window.location);
+        // console.log(history);
+
+        /*
+            Navitor
+                -代表的当前浏览器的信息，通过该对象可以来识别不用的浏览器
+                -由于历史原因，Navigator对象中的大部分属性都已经不能帮助我们识别浏览器了
+                -一般我们只会使用userAgent来判断浏览器的信息
+                -userAgent是一个字符串，这个字符串中包含有用来描述浏览器信息的内容，
+                -不同的浏览器会有不同的userAgent
+
+                -Chrome的userAgent
+                -Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+                -FireFox的userAgent
+                -Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0
+                -在IE11中已经将微软和IE相关的标识都已经去除了，所以我们基本已经不能通过UserAgent来识别一个浏览器是否是IE了
+        */
+        console.log(navigator.appName);
+        console.log(navigator.userAgent);
+
+        var ua = navigator.userAgent;
+        console.log(ua);
+        if (/firefox/i.test(ua)) {
+            alert('你是火狐');
+        } else if (/chrome/i.test(ua)) {
+            alert('你是chrome');
+        } else if (/msie/i.test(ua)) {
+            alert('你是IE');
+        } else if ('ActiveXObject' in window) {
+            alert('你是IE11');
+        }
+
+
+        /*
+            -如果通过UserAgent不能判断，还可以通过一些浏览器中特有的对象，来判断浏览器的信息
+            -IE特有ActiveXObject
+            -但是IE将ActiveXObject改为了false
+        */
+        // if (window.ActiveXObject) {
+        //     alert('你是IE');
+        // } else {
+        //     alert('你不是IE');
+        // }
+        if ('ActiveXObject' in window) {
+            alert('你是IE');
+        } else {
+            alert('你不是IE');
+        }
+    };
+</script>
+
+<body>
+
+</body>
+
+</html>

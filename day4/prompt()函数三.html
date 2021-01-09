@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prompt()函数三</title>
+</head>
+<!-- 
+
+     -->
+<script>
+    var num1 = +prompt("第一个数");
+    var num2 = +prompt("第二个数");
+    var num3 = +prompt("第三个数");
+
+    if (num1 < num2 && num1 < num3) {
+        if (num2 < num3) {
+            alert(num1 + "<" + num2 + "<" + num3);
+        } else {
+            alert(num1 + "<" + num3 + "<" + num2);
+        }
+    } else if (num2 < num1 && num2 < num3) {
+        if (num1 < num3) {
+            alert(num2 + "<" + num1 + "<" + num3);
+        } else {
+            alert(num2 + "<" + num3 + "<" + num1);
+        }
+    } else {
+        if (num1 < num2) {
+            alert(num3 + "<" + num1 + "<" + num2);
+        } else {
+            alert(num3 + "<" + num2 + "<" + num1);
+        }
+    }
+
+    //求最大值
+    var max = num1 > num2 ? (num1 > num3 ? num1 : num3) : (num2 > num3 ? num2 : num3);
+    //求最小值
+    var min = num1 < num2 ? (num1 < num3 ? num1 : num3) : (num2 < num3 ? num2 : num3);
+    console.log(max);
+    console.log(min);
+</script>
+
+<body>
+
+</body>
+
+</html>

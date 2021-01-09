@@ -1,0 +1,53 @@
+body,
+html,
+div,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+#total {
+    width: 50%;
+    height: 100%;
+    background: orange;
+    float: left;
+}
+
+.inner {
+    text-align: center;
+    position: relative;
+    top: 10%;
+}
+
+ul {
+    display: inline-block;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+#btnList {
+    width: 50%;
+    height: 100%;
+    background: palegoldenrod;
+    float: left;
+}
+
+#btnList div {
+    display: inline;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 25%;
+}

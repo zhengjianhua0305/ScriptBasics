@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器的应用</title>
+</head>
+<!-- 
+    定时器的应用
+ -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* 开启绝对定位 */
+        position: absolute;
+        /* 兼容IE，避免出现auto */
+        left: 0;
+    }
+</style>
+<script>
+    //页面加载完成时
+    window.onload = function () {
+        //获取box1
+        var box1 = document.getElementById('box1');
+        //获取btn01
+        var btn01 = document.getElementById('btn01');
+        //点击按钮以后，使box1向右移动（left值增大）
+        //定义定时器变量
+        var timer;
+        btn01.onclick = function () {
+            //在开启定时器前关闭上一个定时器
+            clearTimeout(timer);
+            //开启一个定时器，用来执行动画效果
+            timer = setInterval(function () {
+                //获取box1原来的left值,parsetInt取出合法数字
+                var oldValue = parseInt(getStyle(box1, "left"));
+                //在旧值的基础上自增
+                var newValue = oldValue + 11;
+                //判断newValue是否大于等于800
+                if (newValue >= 800) {
+                    newValue = 800;
+                }
+                //将新值设置给box1
+                box1.style.left = newValue + 'px';
+                //当元素移动到800px时停止动画
+                if (newValue == 800) {
+                    //到达目标关闭定时器
+                    clearInterval(timer);
+                }
+            }, 100);
+        };
+    };
+
+    //获取元素当前正在显示的样式
+    function getStyle(obj, name) {
+        if (window.getComputedStyle) {
+            //正常浏览器
+            return getComputedStyle(obj, null)[name];
+        } else {
+            //IE8
+            return obj.currentStyle[name];
+        }
+    }
+</script>
+
+<body>
+    <button id="btn01">点击按钮以后box1向右移动</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+    <div style="width: 0; height: 1000px; border-left: 1px black solid; position: absolute; left: 800px;top: 0;"></div>
+</body>
+
+</html>

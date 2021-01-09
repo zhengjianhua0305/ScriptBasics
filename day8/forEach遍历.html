@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach遍历</title>
+</head>
+<!-- 
+    forEach()
+        -一般我们都是使用ro循环去遍历数组
+        -JS中还为我们提供了一个方法，用来遍历数组
+        -这个方法只支持IE8以上的浏览器
+        -IE8一下的浏览器均不支持该方法，如果需要兼容
+        -则使用for循环
+
+        参数
+            -函数
+ -->
+<script>
+    var arr = ["A", "B", "C", "D", "E"];
+    /*
+        匿名函数
+            -像这种函数，由我们创建但是不由我们调用的，我们称为回调函数
+            -数组中有几个元素函数就会执行几次
+            -每次执行时浏览器会将遍历到的元素以实参的形式传递进来
+            -我们可以来定义形参，来读取这些内容
+        传递参数
+            -浏览器会在回调函数中传递三个参数
+            -1.第一个参数就是 正在遍历的       元素
+            -2.第二个参数是  正在遍历的元素的  索引
+            -3.第三个参数是 正在遍历的元素的  数组
+    */
+    arr.forEach(function (value, index, object) {
+        console.log("value=" + value);
+        console.log("index=" + index);
+        console.log("object=" + object);
+    })
+</script>
+
+<body>
+
+</body>
+
+</html>

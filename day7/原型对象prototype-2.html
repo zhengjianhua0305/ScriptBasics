@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型对象prototype-2</title>
+</head>
+<!-- 
+    创建一个构造函数
+        -"属性" in 对象  -- 判断某个对象是否含有某个属性  返回值为Boolean
+        -obj instance Object --判断某个实例化对象是否在某个Object(函数)的prototype原型链上
+        -  ._ _proto_ _  这个是原型多个这个的原型就是原型链
+        -当我们寻找某对象是否含有某属性时，就是在原型链上一层一层的往上寻找
+ -->
+<script>
+    function Person() {
+
+    }
+
+    //向Person的原型中添加一个per属性
+    Person.prototype.name = "郑建华";
+    var per = new Person();
+    per.age = 18;
+    console.log(per.name);
+    //使用in检查对象 是否含有某个属性时，如果对象中没有但是原型中有，也会返回true
+    console.log("name" in per);
+    //可以使用对象的hasOwnProperty()来检查对象自身中是否含有该属性
+    //使用该方法只有当对象自身中含有属性时才会返回true
+    console.log(per.hasOwnProperty("name"));
+    console.log(per.hasOwnProperty("age"));
+
+    //hasOwnProperty
+    //对象中并没有hsaOwnProperty属性 --> 该属性也在原型中
+    console.log(per.hasOwnProperty("hasOwnProperty"));
+    console.log("hasOwnProperty" in Person);
+    console.log(hasOwnProperty instanceof Person);
+
+    //查看per原型 中是否有
+    console.log(per.__proto__.hasOwnProperty("hasOwnProperty"));
+
+
+    /*
+        原型对象也是 对象，所以它也有原型，
+            当我们使用一个对象的属性或方法时，会先在自身中寻找
+            自身中如果有，则直接使用
+            如果没有则去原型对象中寻找，如果原型对象中有则使用
+            如果没有则去原型对象的原型中寻找,直到找到Object对象的原型
+            Object对象的原型没有原型，如果在Object中依然没有找到，则返回undefined
+    */
+    console.log(per.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
+    console.log(per.hello);
+    //往上三个该对象就没有原型了所以返回null
+    console.log(per.__proto__.__proto__.__proto__);
+</script>
+
+<body>
+
+</body>
+
+</html>
